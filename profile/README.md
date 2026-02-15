@@ -14,8 +14,8 @@ Our modular "Digital Twin Stack" ensures simulation-validated intent meets real-
 
 1. **[Dashboard](https://github.com/om3gaholdings/nowww3/)** - The tactical "Mission Control" center for live robot tracking and map overlays.
 2. **[Gemini robotics backend](https://github.com/rueabk/robotics_backend)** - The Gemini-powered reasoning engine for semantic hazard detection and task planning.
-3. **[Isaac Sim Environment](https://github.com/AdaptiFleet/isaac-sim-files)** - High-fidelity physics simulation for rapid validation of warehouse and office behaviors.
-4. **[ROS2 Bridge Middleware](https://github.com/AdaptiFleet/ros2-bridge)** - The communication layer transforming simulated world data for the frontend.
+3. **[Robotics Sim in IsaacSim](https://github.com/rueabk/robotics-isaacsim)** - High-fidelity physics simulation for rapid validation of warehouse and office behaviors.
+4. **[ROS2 Bridge WS](https://github.com/rueabk/robotics-isaacsim/tree/main/ros_ws/src)** - The communication layer transforming simulated world data for the frontend.
 5. **[AI Order Backend](https://github.com/AdaptiFleet/ai-backend)** - Inventory management and customer-to-operator notification bridge.
 
 ## 🚀 Future Roadmap

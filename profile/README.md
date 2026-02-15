@@ -7,6 +7,34 @@
 ## 🌟 The Mission
 Traditional warehouse automation is rigid and hard to reconfigure. **AdaptiFleet** solves this by using a single, adaptable AI brain—powered by **Google Gemini 3 Pro VLMs**—to manage a fleet of robots. Non-technical users can deploy complex automation using natural language commands, enabling **10x faster deployment** and **95% reduction in downtime**.
 
+## Gemini
+
+### Gemini 3 Usage
+
+We use **Google Gemini 3** (`gemini-3-flash`) in our pipeline for two purposes:
+
+[Repository](https://github.com/rueabk/robotics-isaacsim)
+
+| Where | File | Use |
+|-------|------|-----|
+| **LLM prompt API** | `llm_prompt_api.py` | Parses natural language prompts (e.g. *"move robot 2 to reception"*) and extracts structured robot movement tasks (robot + waypoint). Handles synonyms, multiple tasks, and legacy location names. Powers the `/prompt` API for fleet control. |
+| **Scene guard VLM** | `scene_guard_vlm.py` | Analyzes robot camera feeds in real time. Detects fallen parcels and obstacles blocking the path. Publishes safety events on `/safety/events` to halt or alert when hazards are detected. |
+
+### Gemini Robotics ER-1.5 Usage
+
+[Repository](https://github.com/rueabk/robotics_backend)
+
+We leverage Google Gemini Robotics ER-1.5 as the planner of our operation.
+
+#### Core Endpoints
+
+`api/v1/plan` (Mission Orchestration):
+
+Acts as the high-level dispatcher. It processes complex, multi-step goals (e.g., "Coordinate a delivery from shelf A to the drone station using Carter") and generates a logical sequence of robot actions. It maps user intent to the LLM Prompt API to handle task decomposition.
+
+`api/v1/execute` (Spatial Grounding):
+
+Acts as the precision controller. It uses Vision-Language Modeling (VLM) to analyze specific camera frames. It returns 0-1000 normalized coordinates for bounding boxes and grasp points, allowing robots to interact with objects they have never seen before.
 
 
 ## 🏗️ Technical Architecture
